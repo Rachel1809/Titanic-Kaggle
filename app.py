@@ -6,8 +6,6 @@ import numpy as np
 from utils import Preprocessing
 
 
-
-
 # Load the model
 model = xgb.XGBClassifier()
 model.load_model('model.json')
@@ -79,6 +77,16 @@ else:
             
             with col2:
                 st.write(res)
+            
+            csv = res.to_csv().encode('utf-8')
+            
+            st.download_button(
+               "Press to Download",
+               csv,
+               "file.csv",
+               "text/csv",
+               key='download-csv'
+            )
         
 
 
