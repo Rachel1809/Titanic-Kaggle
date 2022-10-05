@@ -12,7 +12,7 @@ from utils import Preprocessing
 model = xgb.XGBClassifier()
 model.load_model('model.json')
 
-st.title('Could we survive from Titanic :ship:?')
+st.title('Could you survive from Titanic :ship:?')
 
 option = st.selectbox(
     'How you input?',
@@ -56,13 +56,11 @@ if option == 'Input manually':
     if (click):
         prediction = predict_manual()
         st.subheader('Result:')
-        col1, col2, col3 = st.columns([1,1,1])
         
-        with col2:
-            if prediction == 1:
-                st.success('Yes, we could survive! :heartpulse:')
-            else:
-                st.error('No, we may meet Jack :angel:')
+        if prediction == 1:
+            st.success('Yes, you could survive! :heartpulse:')
+        else:
+            st.error('No, you may meet Jack :angel:')
     
 else:
     click=False
